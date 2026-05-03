@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#194e70" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="饮食计划" />
+<title>51岁女性7天健康饮食计划 · 手机版</title>
+<style>
+:root {
+  --bg:#f5f7f5; --surface:#fff; --surface2:#f0f6f3; --ink:#18221f; --muted:#647067;
+  --brand:#194e70; --brand2:#2f7d72; --accent:#e6a23c; --line:#d9e3dc; --danger:#9f3a38;
+  --shadow:0 12px 28px rgba(11, 30, 24, .10); --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#eef6f4 0,#f8faf8 38%,#f5f7f5 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:calc(82px + env(safe-area-inset-bottom));}
+a{color:var(--brand);overflow-wrap:anywhere;text-decoration:none}
+.app{width:min(100%,540px);margin:0 auto;}
+.hero{position:relative;padding:calc(22px + env(safe-area-inset-top)) 18px 22px;background:linear-gradient(145deg,#194e70 0%,#2f7d72 74%);color:white;border-bottom-left-radius:30px;border-bottom-right-radius:30px;box-shadow:var(--shadow);overflow:hidden;}
+.hero:after{content:"";position:absolute;right:-70px;top:-70px;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.12)}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;position:relative;z-index:1}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.13);border-radius:999px;padding:6px 10px;font-size:12px;white-space:nowrap}
+h1{font-size:28px;line-height:1.15;margin:0 0 8px;letter-spacing:-.02em;position:relative;z-index:1}
+.hero p{margin:0;color:#e9f8f4;font-size:14px;position:relative;z-index:1}
+.hero-actions{display:flex;gap:10px;margin-top:16px;position:relative;z-index:1;flex-wrap:wrap}
+.btn{appearance:none;border:0;border-radius:14px;padding:11px 14px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.08)}
+.btn.primary{background:#fff;color:var(--brand)}
+.btn.ghost{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.38)}
+.content{padding:14px 14px 22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 20px rgba(13,39,32,.06);padding:16px;margin:12px 0;}
+.card h2{font-size:19px;line-height:1.25;margin:0 0 12px;color:#173f39;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card h3{margin:0;font-size:18px}
+.small{font-size:12px;color:var(--muted)}
+.kpi-scroll{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;margin:0 -2px}
+.kpi{min-width:136px;scroll-snap-align:start;background:linear-gradient(180deg,#f3faf6,#fff);border:1px solid #d8eadf;border-radius:18px;padding:12px}
+.kpi b{display:block;font-size:22px;color:var(--brand)}
+.kpi span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:inline-flex;border:1px solid #d8eadf;background:#f3faf6;color:#23594e;border-radius:999px;padding:6px 10px;font-size:12px}
+.notice{background:#fff7e8;border:1px solid #f4d7a5;color:#66420a;border-radius:16px;padding:12px;font-size:13px;margin-top:12px}
+.day-strip{position:sticky;top:0;z-index:5;margin:0 -14px 10px;padding:10px 14px;background:rgba(245,247,245,.92);backdrop-filter:blur(12px);display:flex;gap:8px;overflow-x:auto;border-bottom:1px solid rgba(217,227,220,.8)}
+.day-btn{flex:0 0 auto;appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 12px;font-weight:700;font-size:13px;cursor:pointer}
+.day-btn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.day-panel{display:none}
+.day-panel.active{display:block;animation:fade .18s ease-out}
+@keyframes fade{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}
+.day-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:12px;margin-bottom:12px}
+.day-meta{text-align:right;color:var(--brand);font-weight:800;font-size:12px;min-width:118px}
+.tag{display:inline-block;background:#e9f4ff;color:#17435f;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:700;margin-top:5px}
+.meal{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:start;background:#f8faf8;border:1px solid #e5eee8;border-radius:16px;padding:12px;margin:10px 0}
+.meal b{color:var(--brand);font-size:14px}
+.meal p{margin:0;font-size:14px}
+.note{border-left:4px solid var(--brand2);background:#f0f7f5;border-radius:13px;padding:10px 12px;font-size:13px;color:#2e514b;margin-top:12px}
+.day-nav{display:flex;gap:10px;margin-top:14px}
+.day-nav button{flex:1;background:#edf5f2;color:#1f4e45;border:1px solid #d6e7e1;border-radius:14px;padding:11px;font-weight:800}
+details{border:1px solid var(--line);border-radius:16px;background:#fff;margin:10px 0;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:13px 14px;font-weight:800;color:#173f39;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"＋";font-weight:900;color:var(--brand)}
+details[open] summary:after{content:"－"}
+details p, details ol, details ul{margin:0;padding:0 14px 14px 28px;color:#34403b;font-size:14px}
+details p{padding-left:14px}
+.checks{display:grid;gap:9px}
+.check{display:flex;align-items:flex-start;gap:10px;padding:11px;border:1px solid var(--line);border-radius:15px;background:#fafcfb;font-size:14px}
+.check input{width:20px;height:20px;accent-color:var(--brand2);margin-top:1px;flex:0 0 auto}
+.check span.done{text-decoration:line-through;color:var(--muted)}
+.warn-list{padding-left:18px;margin:0}
+.warn-list li{margin:8px 0;color:#3f4641}
+.warn-list li:first-child{color:var(--danger);font-weight:700}
+.ref-list{padding-left:20px;margin:0}
+.ref-list li{margin:8px 0;font-size:13px}
+.install-tip{display:none;position:fixed;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:20;max-width:516px;margin:0 auto;background:#173f39;color:white;border-radius:18px;padding:12px 14px;box-shadow:var(--shadow);font-size:13px}
+.install-tip button{float:right;margin-left:10px;background:#fff;color:#173f39;border:0;border-radius:10px;padding:6px 10px;font-weight:800}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-top:1px solid rgba(217,227,220,.9);padding:7px max(8px,env(safe-area-inset-left)) calc(7px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right));}
+.nav-inner{width:min(100%,540px);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.nav-link{appearance:none;border:0;background:transparent;color:#5e6b64;border-radius:14px;padding:6px 2px;font-size:11px;font-weight:800;cursor:pointer}
+.nav-link span{display:block;font-size:20px;line-height:1.05}
+.nav-link.active{background:#eaf3f0;color:#174e44}
+.float-top{position:fixed;right:14px;bottom:calc(96px + env(safe-area-inset-bottom));z-index:18;border:0;background:#173f39;color:white;border-radius:999px;width:42px;height:42px;box-shadow:var(--shadow);display:none}
+.float-top.show{display:block}
+#printFooter{display:none}
+@media (min-width:760px){
+  body{padding-bottom:34px}
+  .app{width:min(100%,820px)}
+  .bottom-nav{display:none}
+  .hero{border-radius:0 0 34px 34px}
+  .content{padding:18px}
+  .meal-grid-desktop{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .meal{margin:0}
+  .float-top{bottom:20px}
+}
+@media print{
+  body{background:white;padding-bottom:0}
+  .bottom-nav,.hero-actions,.day-strip,.float-top,.install-tip,.day-nav{display:none!important}
+  .hero{box-shadow:none;border-radius:0;color:#111;background:#fff;padding:16px;border-bottom:2px solid #ddd}
+  .hero p,.pill{color:#333;border-color:#ddd;background:#fff}
+  .card{box-shadow:none;break-inside:avoid;border-color:#ccc}
+  .day-panel{display:block!important;page-break-inside:avoid;margin-bottom:12px}
+  #printFooter{display:block;font-size:12px;color:#555;padding:12px}
+}
+</style>
+
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<meta name="description" content="51岁女性7天健康减重饮食计划，含三餐菜单、购物清单、执行规则和风险提示。">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16.png">
+</head>
+<body>
+<div class="app" id="top">
+  <header class="hero">
+    <div class="topline">
+      <span class="pill">手机版 · 可离线保存</span>
+      <span class="pill">7天三餐不重样</span>
+    </div>
+    <h1>51岁女性<br>健康减重饮食计划</h1>
+    <p>按135斤/67.5kg、157cm、近期1个月增重约10斤设计。用于家庭执行和打印，不替代医学诊断。</p>
+    <div class="hero-actions">
+      <button class="btn primary" onclick="scrollToId('menu')">查看今日菜单</button>
+      <button class="btn ghost" onclick="window.print()">打印/存PDF</button>
+      <button class="btn ghost" onclick="sharePage()">分享</button>
+    </div>
+  </header>
+  <main class="content">
+    <section class="card" id="home">
+      <h2>一眼看懂目标 <span class="small">每日执行</span></h2>
+      <div class="kpi-scroll">
+        <div class="kpi"><b>27.4</b><span>BMI，属超重范围</span></div>
+        <div class="kpi"><b>1250–1400</b><span>kcal/天，先从1300–1350起步</span></div>
+        <div class="kpi"><b>85–95g</b><span>蛋白质/天，保护肌肉</span></div>
+        <div class="kpi"><b>≥25g</b><span>膳食纤维/天，增强饱腹</span></div>
+      </div>
+      <div class="badges"><span class="badge">白水1500–1700mL/天</span><span class="badge">盐&lt;5g/天</span><span class="badge">每周≥150分钟活动</span><span class="badge">每周2天抗阻训练</span></div>
+      <div class="notice">近期1个月增加约10斤速度偏快。如伴随水肿、气短、乏力、尿量变化、明显怕冷便秘或异常出血，建议先就医排查。</div>
+    </section>
+
+    <section class="card">
+      <h2>核心依据</h2>
+      <details open><summary>国内外权威建议</summary>
+        <ul>
+          <li>中国居民膳食指南：食物多样、谷类为主、蔬果充足、奶豆充足、规律进餐、少盐少油少糖。</li>
+          <li>WHO/美国膳食指南：限制钠、添加糖和饱和脂肪，优先高营养密度食物。</li>
+          <li>NIH/ODS、NHS等骨健康资料：50岁以上女性更应重视钙、维生素D、奶豆和负重运动。</li>
+          <li>EFSA/ESPEN：成人需要充足蛋白和膳食纤维；减重期要避免肌肉流失。</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="card" id="menu">
+      <h2>7天菜单 <span class="small" id="dayCount">第1天 / 共7天</span></h2>
+      <div class="day-strip" id="dayStrip"></div>
+      <div id="dayPanels"></div>
+    </section>
+
+    <section class="card" id="shop">
+      <h2>一周购物清单</h2>
+      <div id="shoppingList"></div>
+    </section>
+
+    <section class="card" id="rules">
+      <h2>执行规则</h2>
+      <div class="checks" id="ruleChecks"></div>
+    </section>
+
+    <section class="card" id="risk">
+      <h2>风险与注意事项</h2>
+      <ul class="warn-list" id="warnList"></ul>
+    </section>
+
+    <section class="card" id="refs">
+      <h2>主要参考来源</h2>
+      <ol class="ref-list" id="refList"></ol>
+    </section>
+  </main>
+  <div id="printFooter">本页面为手机优化版饮食计划，可由浏览器打印或另存为PDF。</div>
+</div>
+<div class="install-tip" id="installTip"><button onclick="this.parentElement.style.display='none'">知道了</button>手机浏览器可通过“分享”或菜单选择“添加到主屏幕”，作为类似APP入口使用。</div>
+<button class="float-top" id="floatTop" onclick="scrollToId('top')">↑</button>
+<nav class="bottom-nav" aria-label="底部导航">
+  <div class="nav-inner">
+    <button class="nav-link active" data-target="home"><span>⌂</span>目标</button>
+    <button class="nav-link" data-target="menu"><span>☰</span>菜单</button>
+    <button class="nav-link" data-target="shop"><span>□</span>采购</button>
+    <button class="nav-link" data-target="rules"><span>✓</span>执行</button>
+    <button class="nav-link" data-target="refs"><span>§</span>来源</button>
+  </div>
+</nav>
+<script>
+const DAYS = [{"day": "第1天", "summary": "约1317 kcal｜蛋白质97g｜纤维25g", "tag": "减重启动日", "meals": [["早餐", "燕麦35g + 低脂奶200mL + 蓝莓80g + 核桃6g + 水煮蛋1个"], ["午餐", "糙米饭100g + 清蒸鲈鱼120g + 西兰花200g + 胡萝卜80g + 北豆腐80g"], ["晚餐", "荞麦面120g + 鸡胸肉80g + 菠菜100g + 黄瓜120g + 胡萝卜50g + 芝麻酱5g"], ["加餐", "原味酸奶120g + 猕猴桃80g"]], "note": "鱼类、豆腐、奶类帮助补充优质蛋白和钙；适合减重启动日。"}, {"day": "第2天", "summary": "约1243 kcal｜蛋白质98g｜纤维24g", "tag": "高蛋白清爽日", "meals": [["早餐", "全麦面包50g + 水浸金枪鱼40g + 鸡蛋1个 + 番茄80g + 生菜40g + 无糖豆浆200mL"], ["午餐", "藜麦120g + 鸡胸肉80g + 生菜100g + 黄瓜100g + 小番茄120g + 玉米粒50g"], ["晚餐", "虾仁90g + 北豆腐100g + 菌菇150g + 青江菜150g + 小米30g + 南瓜120g"], ["加餐", "苹果130g + 无盐杏仁8g"]], "note": "若当天步数较多或下午饥饿，可加无糖高钙豆浆100mL。"}, {"day": "第3天", "summary": "约1422 kcal｜蛋白质97g｜纤维34g", "tag": "活动量较大日", "meals": [["早餐", "希腊酸奶180g + 燕麦25g + 草莓150g + 杏仁8g + 亚麻籽粉5g"], ["午餐", "全麦意面50g + 瘦牛肉80g + 番茄200g + 洋葱50g + 菠菜80g + 蘑菇80g"], ["晚餐", "三文鱼90g + 杂粮饭100g + 芥蓝200g + 海带丝60g + 毛豆60g"], ["加餐", "无糖豆浆200mL + 梨130g"]], "note": "本日热量略高，适合活动量较大的日子；三文鱼提供不饱和脂肪酸。"}, {"day": "第4天", "summary": "约1253 kcal｜蛋白质81g｜纤维26g", "tag": "轻晚餐日", "meals": [["早餐", "小米30g + 南瓜150g + 嫩豆腐100g + 鸡蛋1个 + 小番茄150g"], ["午餐", "糙米饭100g + 鸡胸肉100g + 彩椒150g + 木耳50g + 芹菜80g + 花生8g"], ["晚餐", "鲭鱼90g + 冬瓜250g + 海带50g + 芥蓝200g + 玉米粒80g"], ["加餐", "低脂奶180mL + 橙子130g"]], "note": "温和易执行；晚餐偏清淡，适合久坐或晚间活动少的日子。"}, {"day": "第5天", "summary": "约1261 kcal｜蛋白质88g｜纤维25g", "tag": "低脂高蛋白日", "meals": [["早餐", "玉米100g + 全麦馒头50g + 无糖豆浆250mL + 茶叶蛋1个 + 小番茄100g"], ["午餐", "红豆糙米饭120g + 瘦牛肉90g + 白萝卜200g + 蘑菇80g + 青江菜100g"], ["晚餐", "红薯130g + 鳕鱼100g + 菠菜150g + 北豆腐80g + 蘑菇80g"], ["加餐", "原味开菲尔/酸奶120g + 草莓120g + 核桃5g"]], "note": "牛肉补铁但控制份量；鳕鱼低脂高蛋白，适合作为轻晚餐。"}, {"day": "第6天", "summary": "约1354 kcal｜蛋白质87g｜纤维30g", "tag": "豆类纤维日", "meals": [["早餐", "燕麦香蕉蛋饼：燕麦30g + 香蕉70g + 鸡蛋1个 + 低脂奶80mL；另配原味酸奶100g"], ["午餐", "沙丁鱼70g + 熟鹰嘴豆80g + 熟藜麦80g + 番茄200g + 洋葱50g + 西葫芦150g"], ["晚餐", "鸡肉丸80g + 蘑菇100g + 青江菜150g + 豆腐60g + 紫薯130g"], ["加餐", "低脂奶180mL + 梨150g"]], "note": "带骨沙丁鱼有助钙和维生素D摄入，优先选原味或低钠罐头。"}, {"day": "第7天", "summary": "约1284 kcal｜蛋白质93g｜纤维27g", "tag": "骨骼友好日", "meals": [["早餐", "豆腐菠菜蛋饼：北豆腐70g + 鸡蛋1个 + 燕麦粉15g + 菠菜80g；配低脂奶180mL + 苹果80g"], ["午餐", "猪里脊70g + 豆干40g + 荷兰豆120g + 彩椒80g + 糙米饭100g"], ["晚餐", "鲈鱼100g + 北豆腐80g + 菌菇150g + 大白菜150g + 杂粮饭90g + 西兰花150g"], ["加餐", "猕猴桃120g + 核桃6g"]], "note": "鱼+豆腐+深绿色蔬菜组合，对骨骼和心血管更友好。"}];
+const SHOPPING = [["主食杂粮", "燕麦200g；糙米/杂粮米生重350–400g；藜麦100g；小米100g；全麦意面50–100g；荞麦面1小把；全麦面包4片；全麦馒头1–2个；玉米2根；红薯/紫薯3–4个。"], ["鱼禽畜蛋", "鸡胸约400g；鸡绞肉100g；瘦牛肉200g；猪里脊100g；鲈鱼约250g；三文鱼120g；鲭鱼120g；鳕鱼120g；虾仁120g；沙丁鱼罐头1罐；金枪鱼罐头1小罐；鸡蛋7–8个。"], ["奶和豆制品", "低脂/脱脂奶1.2–1.5L；无糖高钙豆浆约1L；原味/希腊酸奶600–700g；北豆腐2盒约600g；嫩豆腐1盒；豆干1小包；毛豆或鹰嘴豆1小袋/小罐。"], ["蔬菜", "深绿叶菜1.5–2kg；番茄/小番茄约1kg；菌菇600–700g；黄瓜2根；彩椒2–3个；南瓜300g；白萝卜1根；冬瓜300g；海带1袋；芹菜、荷兰豆、西葫芦、大白菜适量。"], ["水果", "猕猴桃3–4个；苹果2个；梨2个；草莓300g；蓝莓1小盒；橙子1–2个；香蕉1根。每日水果总量控制在200–350g。"], ["坚果与调味", "核桃20g；杏仁20g；亚麻籽粉1小袋；芝麻酱1小瓶；菜籽油/橄榄油250mL；低钠酱油；醋、黑胡椒、蒜、姜、柠檬、碘盐。"]];
+const RULES = ["每餐先保证蛋白质：鱼、鸡胸、虾、鸡蛋、豆腐、豆浆、酸奶轮换，目标85–95g/天。", "主食不取消，但定量：优先糙米、燕麦、藜麦、小米、玉米、薯类；熟米饭通常控制在90–120g/餐。", "蔬菜每日不少于300g，建议做到500g左右，其中深绿色蔬菜至少占一半。", "每天保留1次100–150 kcal加餐，避免用饼干、蛋糕、奶茶、果汁替代。", "烹调油每日约25g以内，炒菜每餐约1茶匙；盐<5g/天，酱油尽量≤10mL/天。", "白水1500–1700mL/天；含糖饮料、奶茶、果汁、酒精不纳入本方案。", "建议每周≥150分钟中等强度活动，并加入2天抗阻训练，以减少肌肉流失。"];
+const WARNINGS = ["1个月增加约10斤速度偏快。如伴随下肢/面部水肿、气短、乏力、尿量变化、明显怕冷便秘、异常出血，应先就医排查。", "如有糖尿病、慢性肾病、痛风、胆囊疾病、严重胃食管反流、骨质疏松用药、甲状腺疾病，菜单需个体化调整。", "服用左甲状腺素、华法林、双膦酸盐类骨质疏松药、部分降脂/降压药者，应特别注意药物与钙、铁、绿叶菜或葡萄柚的相互作用。", "连续2周严格执行后体重完全不动，先核查零食、油盐、主食称量和饮料；执行度高时再微调80–100 kcal或增加活动。"];
+const REFS = [["中国营养学会：《中国居民膳食指南（2022）》平衡膳食八准则", "https://dg.cnsoc.org/article/04/J4-AsD_DR3OLQMnHG0-jZA.html"], ["国家卫健委：《体重管理指导原则（2024年版）》", "https://www.nhc.gov.cn/ylyjs/zcwj/202412/75cb79c171c94def9e768193e65484f7/files/1736390749000_59785.pdf"], ["国家卫健委：《成人肥胖食养指南（2024年版）》", "https://www.nhc.gov.cn/sps/c100088/202402/9ba512ba8e314a47a181db11d2fa188d/files/1743476136267_20714.pdf"], ["WHO: Healthy diet", "https://www.who.int/news-room/fact-sheets/detail/healthy-diet"], ["WHO: Sodium reduction", "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction"], ["Dietary Guidelines for Americans 2020-2025", "https://www.dietaryguidelines.gov/sites/default/files/2021-03/Dietary_Guidelines_for_Americans-2020-2025.pdf"], ["NIH ODS: Calcium fact sheet", "https://ods.od.nih.gov/factsheets/Calcium-HealthProfessional/"], ["NIH ODS: Vitamin D fact sheet", "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/"], ["NIDDK: Choosing a safe and successful weight-loss program", "https://www.niddk.nih.gov/health-information/weight-management/choosing-a-safe-successful-weight-loss-program"]];
+const dayStrip = document.getElementById('dayStrip');
+const dayPanels = document.getElementById('dayPanels');
+let activeDay = Number(localStorage.getItem('diet-active-day') || 0);
+function mealIcon(name){ return {'早餐':'早','午餐':'午','晚餐':'晚','加餐':'加'}[name] || '餐'; }
+function renderDays(){
+  dayStrip.innerHTML = DAYS.map((d,i)=>`<button class="day-btn ${i===activeDay?'active':''}" data-i="${i}">${d.day.replace('第','D').replace('天','')}</button>`).join('');
+  dayPanels.innerHTML = DAYS.map((d,i)=>`<article class="day-panel ${i===activeDay?'active':''}" id="panel-${i}">
+    <div class="day-head"><div><h3>${d.day}</h3><span class="tag">${d.tag}</span></div><div class="day-meta">${d.summary}</div></div>
+    <div class="meal-grid-desktop">${d.meals.map(m=>`<div class="meal"><b>${mealIcon(m[0])}<br>${m[0]}</b><p>${m[1]}</p></div>`).join('')}</div>
+    <div class="note">${d.note}</div>
+    <div class="day-nav"><button onclick="setDay(Math.max(0, activeDay-1))">上一天</button><button onclick="setDay(Math.min(DAYS.length-1, activeDay+1))">下一天</button></div>
+  </article>`).join('');
+  dayStrip.querySelectorAll('.day-btn').forEach(btn=>btn.addEventListener('click',()=>setDay(Number(btn.dataset.i))));
+  updateDayCount();
+}
+function setDay(i){ activeDay = i; localStorage.setItem('diet-active-day', i); renderDays(); document.getElementById('menu').scrollIntoView({behavior:'smooth', block:'start'}); }
+function updateDayCount(){ document.getElementById('dayCount').textContent = `第${activeDay+1}天 / 共${DAYS.length}天`; }
+function renderShopping(){ document.getElementById('shoppingList').innerHTML = SHOPPING.map((s,i)=>`<details ${i<2?'open':''}><summary>${s[0]}</summary><p>${s[1]}</p></details>`).join(''); }
+function renderRules(){
+  const saved = JSON.parse(localStorage.getItem('diet-rule-checks') || '{}');
+  document.getElementById('ruleChecks').innerHTML = RULES.map((r,i)=>`<label class="check"><input type="checkbox" data-i="${i}" ${saved[i]?'checked':''}><span class="${saved[i]?'done':''}">${r}</span></label>`).join('');
+  document.querySelectorAll('#ruleChecks input').forEach(ch=>ch.addEventListener('change',()=>{
+    saved[ch.dataset.i] = ch.checked; localStorage.setItem('diet-rule-checks', JSON.stringify(saved));
+    ch.nextElementSibling.classList.toggle('done', ch.checked);
+  }));
+}
+function renderLists(){
+  document.getElementById('warnList').innerHTML = WARNINGS.map(w=>`<li>${w}</li>`).join('');
+  document.getElementById('refList').innerHTML = REFS.map(r=>`<li><a href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a></li>`).join('');
+}
+function scrollToId(id){ document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'}); }
+function sharePage(){
+  const title = document.title;
+  const text = '51岁女性7天健康减重饮食计划（手机版）';
+  if(navigator.share) navigator.share({title, text, url: location.href}).catch(()=>{});
+  else navigator.clipboard?.writeText(location.href).then(()=>alert('链接已复制'));
+}
+document.querySelectorAll('.nav-link').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); scrollToId(btn.dataset.target);
+}));
+const floatTop = document.getElementById('floatTop');
+window.addEventListener('scroll',()=>{floatTop.classList.toggle('show', window.scrollY>480);});
+setTimeout(()=>{ if(!localStorage.getItem('diet-install-tip-seen')){ document.getElementById('installTip').style.display='block'; localStorage.setItem('diet-install-tip-seen','1'); } }, 1200);
+renderDays(); renderShopping(); renderRules(); renderLists();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
