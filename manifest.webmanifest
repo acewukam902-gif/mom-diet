@@ -1,37 +1,17 @@
 {
-  "name": "妈妈饮食方案",
-  "short_name": "饮食方案",
-  "description": "51岁女性7天健康减重饮食计划，含三餐菜单、购物清单、执行规则和风险提示。",
-  "lang": "zh-CN",
-  "start_url": "./index.html",
+  "name": "妈妈高性价比饮食计划",
+  "short_name": "妈妈饮食",
+  "description": "51岁女性低成本健康控重一周饮食计划，含7天菜单、采购清单和执行规则。",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "background_color": "#f4f7f3",
+  "theme_color": "#2f6b4f",
   "orientation": "portrait-primary",
-  "background_color": "#f5f7f5",
-  "theme_color": "#194e70",
-  "categories": [
-    "health",
-    "lifestyle",
-    "food"
-  ],
+  "lang": "zh-CN",
   "icons": [
-    {
-      "src": "./icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./icons/maskable-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+    {"src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "./icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
   ]
 }

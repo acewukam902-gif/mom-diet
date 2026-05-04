@@ -1,29 +1,27 @@
-# 妈妈饮食方案 PWA 网页包
+# 妈妈高性价比饮食计划 PWA
 
-这是一个静态 PWA 网页包，可部署到 GitHub Pages、Netlify 或 Vercel。部署后用 iPhone Safari 打开发布后的 `https://...` 地址，即可通过“分享 → 添加到主屏幕”添加成桌面 App 图标。
+这是一个静态 PWA 网页包，可部署到 GitHub Pages、Netlify、Vercel 或任意 HTTPS 静态站点。
 
 ## 文件说明
 
-- `index.html`：手机优化版饮食方案主页面
-- `manifest.webmanifest`：PWA 应用名称、图标、启动方式配置
-- `sw.js`：Service Worker，用于基础离线缓存
-- `icons/`：PWA 和 iPhone 主屏幕图标
-- `_headers`：Netlify 可读取的响应头配置
-- `vercel.json`：Vercel 可读取的响应头配置
+- `index.html`：手机优先版饮食计划页面
+- `manifest.webmanifest`：PWA 应用名称、图标、启动方式
+- `sw.js`：离线缓存 Service Worker
+- `icons/`：桌面图标与 iOS 图标
 - `.nojekyll`：GitHub Pages 使用，避免 Jekyll 处理静态文件
+- `_headers`：Netlify 可读取的缓存/安全头配置
+- `vercel.json`：Vercel 静态部署配置
 
-## 本地测试
+## GitHub Pages 上传
 
-把本文件夹放到电脑上，在该目录运行：
+1. 新建仓库。
+2. 不要只上传外层文件夹；请把本文件夹内部所有文件直接放到仓库根目录。
+3. 仓库根目录应直接看到 `index.html`、`manifest.webmanifest`、`sw.js`、`icons/`。
+4. Settings → Pages → Source: Deploy from a branch → Branch: main → Folder: /(root)。
+5. 等待部署完成后，用 `https://用户名.github.io/仓库名/` 打开。
 
-```bash
-python3 -m http.server 8080
-```
+## 手机安装
 
-然后浏览器打开：
+- iPhone：Safari 打开网址 → 分享 → 添加到主屏幕。
+- Android：Chrome 打开网址 → 右上角 ⋮ → 安装应用 / 添加到主屏幕。
 
-```text
-http://localhost:8080
-```
-
-注意：PWA 安装和 Service Worker 正式测试需要 `https://`，所以建议部署到线上平台后再用手机测试。

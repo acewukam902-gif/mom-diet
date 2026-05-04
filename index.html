@@ -3,251 +3,194 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#194e70" />
-<meta name="mobile-web-app-capable" content="yes" />
+<meta name="theme-color" content="#2f6b4f" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="饮食计划" />
-<title>51岁女性7天健康饮食计划 · 手机版</title>
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="妈妈饮食" />
+<link rel="manifest" href="./manifest.webmanifest" />
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+<title>妈妈高性价比饮食计划</title>
 <style>
-:root {
-  --bg:#f5f7f5; --surface:#fff; --surface2:#f0f6f3; --ink:#18221f; --muted:#647067;
-  --brand:#194e70; --brand2:#2f7d72; --accent:#e6a23c; --line:#d9e3dc; --danger:#9f3a38;
-  --shadow:0 12px 28px rgba(11, 30, 24, .10); --radius:22px;
+:root{
+  --bg:#f4f7f3;--card:#fff;--ink:#1f2937;--muted:#697386;--brand:#2f6b4f;--brand2:#8dbf67;--soft:#e9f4e8;--warn:#fff7e6;--line:#d8e2d5;
+  --shadow:0 10px 26px rgba(15,23,42,.08);
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(180deg,#eef6f4 0,#f8faf8 38%,#f5f7f5 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:calc(82px + env(safe-area-inset-bottom));}
-a{color:var(--brand);overflow-wrap:anywhere;text-decoration:none}
-.app{width:min(100%,540px);margin:0 auto;}
-.hero{position:relative;padding:calc(22px + env(safe-area-inset-top)) 18px 22px;background:linear-gradient(145deg,#194e70 0%,#2f7d72 74%);color:white;border-bottom-left-radius:30px;border-bottom-right-radius:30px;box-shadow:var(--shadow);overflow:hidden;}
-.hero:after{content:"";position:absolute;right:-70px;top:-70px;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.12)}
-.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;position:relative;z-index:1}
-.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.13);border-radius:999px;padding:6px 10px;font-size:12px;white-space:nowrap}
-h1{font-size:28px;line-height:1.15;margin:0 0 8px;letter-spacing:-.02em;position:relative;z-index:1}
-.hero p{margin:0;color:#e9f8f4;font-size:14px;position:relative;z-index:1}
-.hero-actions{display:flex;gap:10px;margin-top:16px;position:relative;z-index:1;flex-wrap:wrap}
-.btn{appearance:none;border:0;border-radius:14px;padding:11px 14px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.08)}
-.btn.primary{background:#fff;color:var(--brand)}
-.btn.ghost{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.38)}
-.content{padding:14px 14px 22px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 20px rgba(13,39,32,.06);padding:16px;margin:12px 0;}
-.card h2{font-size:19px;line-height:1.25;margin:0 0 12px;color:#173f39;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.card h3{margin:0;font-size:18px}
-.small{font-size:12px;color:var(--muted)}
-.kpi-scroll{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;margin:0 -2px}
-.kpi{min-width:136px;scroll-snap-align:start;background:linear-gradient(180deg,#f3faf6,#fff);border:1px solid #d8eadf;border-radius:18px;padding:12px}
-.kpi b{display:block;font-size:22px;color:var(--brand)}
-.kpi span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.badge{display:inline-flex;border:1px solid #d8eadf;background:#f3faf6;color:#23594e;border-radius:999px;padding:6px 10px;font-size:12px}
-.notice{background:#fff7e8;border:1px solid #f4d7a5;color:#66420a;border-radius:16px;padding:12px;font-size:13px;margin-top:12px}
-.day-strip{position:sticky;top:0;z-index:5;margin:0 -14px 10px;padding:10px 14px;background:rgba(245,247,245,.92);backdrop-filter:blur(12px);display:flex;gap:8px;overflow-x:auto;border-bottom:1px solid rgba(217,227,220,.8)}
-.day-btn{flex:0 0 auto;appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 12px;font-weight:700;font-size:13px;cursor:pointer}
-.day-btn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
-.day-panel{display:none}
-.day-panel.active{display:block;animation:fade .18s ease-out}
-@keyframes fade{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}
-.day-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:12px;margin-bottom:12px}
-.day-meta{text-align:right;color:var(--brand);font-weight:800;font-size:12px;min-width:118px}
-.tag{display:inline-block;background:#e9f4ff;color:#17435f;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:700;margin-top:5px}
-.meal{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:start;background:#f8faf8;border:1px solid #e5eee8;border-radius:16px;padding:12px;margin:10px 0}
-.meal b{color:var(--brand);font-size:14px}
-.meal p{margin:0;font-size:14px}
-.note{border-left:4px solid var(--brand2);background:#f0f7f5;border-radius:13px;padding:10px 12px;font-size:13px;color:#2e514b;margin-top:12px}
-.day-nav{display:flex;gap:10px;margin-top:14px}
-.day-nav button{flex:1;background:#edf5f2;color:#1f4e45;border:1px solid #d6e7e1;border-radius:14px;padding:11px;font-weight:800}
-details{border:1px solid var(--line);border-radius:16px;background:#fff;margin:10px 0;overflow:hidden}
-summary{list-style:none;cursor:pointer;padding:13px 14px;font-weight:800;color:#173f39;display:flex;justify-content:space-between;align-items:center}
-summary::-webkit-details-marker{display:none}
-summary:after{content:"＋";font-weight:900;color:var(--brand)}
-details[open] summary:after{content:"－"}
-details p, details ol, details ul{margin:0;padding:0 14px 14px 28px;color:#34403b;font-size:14px}
-details p{padding-left:14px}
-.checks{display:grid;gap:9px}
-.check{display:flex;align-items:flex-start;gap:10px;padding:11px;border:1px solid var(--line);border-radius:15px;background:#fafcfb;font-size:14px}
-.check input{width:20px;height:20px;accent-color:var(--brand2);margin-top:1px;flex:0 0 auto}
-.check span.done{text-decoration:line-through;color:var(--muted)}
-.warn-list{padding-left:18px;margin:0}
-.warn-list li{margin:8px 0;color:#3f4641}
-.warn-list li:first-child{color:var(--danger);font-weight:700}
-.ref-list{padding-left:20px;margin:0}
-.ref-list li{margin:8px 0;font-size:13px}
-.install-tip{display:none;position:fixed;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:20;max-width:516px;margin:0 auto;background:#173f39;color:white;border-radius:18px;padding:12px 14px;box-shadow:var(--shadow);font-size:13px}
-.install-tip button{float:right;margin-left:10px;background:#fff;color:#173f39;border:0;border-radius:10px;padding:6px 10px;font-weight:800}
-.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-top:1px solid rgba(217,227,220,.9);padding:7px max(8px,env(safe-area-inset-left)) calc(7px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right));}
-.nav-inner{width:min(100%,540px);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
-.nav-link{appearance:none;border:0;background:transparent;color:#5e6b64;border-radius:14px;padding:6px 2px;font-size:11px;font-weight:800;cursor:pointer}
-.nav-link span{display:block;font-size:20px;line-height:1.05}
-.nav-link.active{background:#eaf3f0;color:#174e44}
-.float-top{position:fixed;right:14px;bottom:calc(96px + env(safe-area-inset-bottom));z-index:18;border:0;background:#173f39;color:white;border-radius:999px;width:42px;height:42px;box-shadow:var(--shadow);display:none}
-.float-top.show{display:block}
-#printFooter{display:none}
-@media (min-width:760px){
-  body{padding-bottom:34px}
-  .app{width:min(100%,820px)}
-  .bottom-nav{display:none}
-  .hero{border-radius:0 0 34px 34px}
-  .content{padding:18px}
-  .meal-grid-desktop{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .meal{margin:0}
-  .float-top{bottom:20px}
-}
-@media print{
-  body{background:white;padding-bottom:0}
-  .bottom-nav,.hero-actions,.day-strip,.float-top,.install-tip,.day-nav{display:none!important}
-  .hero{box-shadow:none;border-radius:0;color:#111;background:#fff;padding:16px;border-bottom:2px solid #ddd}
-  .hero p,.pill{color:#333;border-color:#ddd;background:#fff}
-  .card{box-shadow:none;break-inside:avoid;border-color:#ccc}
-  .day-panel{display:block!important;page-break-inside:avoid;margin-bottom:12px}
-  #printFooter{display:block;font-size:12px;color:#555;padding:12px}
-}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;padding-bottom:78px}
+a{color:#216b55;overflow-wrap:anywhere}button,input{font:inherit}.wrap{max-width:980px;margin:0 auto;padding:0 16px}.hero{background:linear-gradient(135deg,#2f6b4f,#7aa35a);color:#fff;padding:28px 0 20px;border-bottom-left-radius:26px;border-bottom-right-radius:26px;box-shadow:var(--shadow)}.hero h1{font-size:clamp(24px,6vw,40px);line-height:1.12;margin:0 0 8px}.hero p{margin:0;color:#eef8ee}.hero .chips{display:flex;gap:8px;overflow:auto;padding-top:16px;scrollbar-width:none}.chip{white-space:nowrap;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:6px 10px;border-radius:999px;font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow)}h2{font-size:21px;color:var(--brand);margin:0 0 12px}h3{font-size:17px;margin:0 0 8px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.kpi{background:var(--soft);border-radius:16px;padding:13px}.kpi b{display:block;color:var(--brand);font-size:22px;line-height:1.1}.kpi span{font-size:13px;color:var(--muted)}.notice{background:var(--warn);border:1px solid #f0d59c;border-radius:16px;padding:12px;color:#664d03}.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none;position:sticky;top:0;background:linear-gradient(var(--bg),rgba(244,247,243,.94));z-index:3}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;color:var(--ink);white-space:nowrap}.tab.active{background:var(--brand);color:#fff;border-color:var(--brand)}.day{display:none}.day.active{display:block}.day-head{background:linear-gradient(135deg,var(--soft),#fff);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}.day-head b{display:block;font-size:19px;color:var(--brand)}.day-head span{font-size:13px;color:var(--muted)}.meal{border:1px solid var(--line);background:#fff;border-radius:16px;margin:10px 0;padding:13px}.meal .label{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;margin-bottom:5px}.meal .label strong{color:var(--brand)}.meal .label small{color:var(--muted);white-space:nowrap}.meal p{margin:0}.swap{background:#f7faf7;border-radius:14px;padding:12px;margin-top:10px;color:#334155}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.box{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}.box h3{color:var(--brand)}ul,ol{margin:0;padding-left:1.2em}.compact li{margin:4px 0}.tag{display:inline-block;background:#eef7ee;color:#2f6b4f;border:1px solid #cddfca;border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:8px max(8px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right));box-shadow:0 -8px 20px rgba(15,23,42,.08)}.bottom-nav a{text-decoration:none;color:#43515f;text-align:center;font-size:12px;padding:4px 2px;border-radius:12px}.bottom-nav a b{display:block;font-size:18px;line-height:1.1}.bottom-nav a:active{background:var(--soft)}details{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff;margin:10px 0}summary{cursor:pointer;color:var(--brand);font-weight:700}.btnrow{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--brand);background:var(--brand);color:white;border-radius:12px;padding:10px 12px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}.btn.secondary{background:#fff;color:var(--brand)}.checklist label{display:block;padding:9px 0;border-bottom:1px dashed var(--line)}.checklist label:last-child{border-bottom:none}.checklist input{width:18px;height:18px;margin-right:8px;vertical-align:-3px}.mini{font-size:13px;color:var(--muted)}@media(min-width:760px){body{padding-bottom:0}.bottom-nav{display:none}.meal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.meal{margin:0}.grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:520px){.wrap{padding:0 12px}.card{padding:15px;border-radius:18px}.two,.grid{grid-template-columns:1fr}.hero{padding-top:24px}.meal .label{display:block}.meal .label small{white-space:normal}.btn{width:100%;justify-content:center}}@media print{body{background:#fff;padding:0}.hero,.bottom-nav,.tabs,.btnrow{display:none}.card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}.day{display:block!important}.wrap{max-width:none}.meal{break-inside:avoid}}
 </style>
-
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-<meta name="description" content="51岁女性7天健康减重饮食计划，含三餐菜单、购物清单、执行规则和风险提示。">
-<meta name="format-detection" content="telephone=no">
-<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16.png">
 </head>
 <body>
-<div class="app" id="top">
-  <header class="hero">
-    <div class="topline">
-      <span class="pill">手机版 · 可离线保存</span>
-      <span class="pill">7天三餐不重样</span>
+<header class="hero">
+  <div class="wrap">
+    <h1>妈妈高性价比饮食计划</h1>
+    <p>适用于51岁、157cm、约67.5kg、近期体重上升后的控重期。食材改为菜市场/普通超市常见款，避开三文鱼、蓝莓、藜麦、希腊酸奶等高价食材。</p>
+    <div class="chips">
+      <span class="chip">约1250–1400 kcal/天</span><span class="chip">蛋白质约75–90g/天</span><span class="chip">熟米饭90–120g/餐</span><span class="chip">蔬菜≥500g/天</span><span class="chip">一人一周版</span>
     </div>
-    <h1>51岁女性<br>健康减重饮食计划</h1>
-    <p>按135斤/67.5kg、157cm、近期1个月增重约10斤设计。用于家庭执行和打印，不替代医学诊断。</p>
-    <div class="hero-actions">
-      <button class="btn primary" onclick="scrollToId('menu')">查看今日菜单</button>
-      <button class="btn ghost" onclick="window.print()">打印/存PDF</button>
-      <button class="btn ghost" onclick="sharePage()">分享</button>
-    </div>
-  </header>
-  <main class="content">
-    <section class="card" id="home">
-      <h2>一眼看懂目标 <span class="small">每日执行</span></h2>
-      <div class="kpi-scroll">
-        <div class="kpi"><b>27.4</b><span>BMI，属超重范围</span></div>
-        <div class="kpi"><b>1250–1400</b><span>kcal/天，先从1300–1350起步</span></div>
-        <div class="kpi"><b>85–95g</b><span>蛋白质/天，保护肌肉</span></div>
-        <div class="kpi"><b>≥25g</b><span>膳食纤维/天，增强饱腹</span></div>
-      </div>
-      <div class="badges"><span class="badge">白水1500–1700mL/天</span><span class="badge">盐&lt;5g/天</span><span class="badge">每周≥150分钟活动</span><span class="badge">每周2天抗阻训练</span></div>
-      <div class="notice">近期1个月增加约10斤速度偏快。如伴随水肿、气短、乏力、尿量变化、明显怕冷便秘或异常出血，建议先就医排查。</div>
-    </section>
-
-    <section class="card">
-      <h2>核心依据</h2>
-      <details open><summary>国内外权威建议</summary>
-        <ul>
-          <li>中国居民膳食指南：食物多样、谷类为主、蔬果充足、奶豆充足、规律进餐、少盐少油少糖。</li>
-          <li>WHO/美国膳食指南：限制钠、添加糖和饱和脂肪，优先高营养密度食物。</li>
-          <li>NIH/ODS、NHS等骨健康资料：50岁以上女性更应重视钙、维生素D、奶豆和负重运动。</li>
-          <li>EFSA/ESPEN：成人需要充足蛋白和膳食纤维；减重期要避免肌肉流失。</li>
-        </ul>
-      </details>
-    </section>
-
-    <section class="card" id="menu">
-      <h2>7天菜单 <span class="small" id="dayCount">第1天 / 共7天</span></h2>
-      <div class="day-strip" id="dayStrip"></div>
-      <div id="dayPanels"></div>
-    </section>
-
-    <section class="card" id="shop">
-      <h2>一周购物清单</h2>
-      <div id="shoppingList"></div>
-    </section>
-
-    <section class="card" id="rules">
-      <h2>执行规则</h2>
-      <div class="checks" id="ruleChecks"></div>
-    </section>
-
-    <section class="card" id="risk">
-      <h2>风险与注意事项</h2>
-      <ul class="warn-list" id="warnList"></ul>
-    </section>
-
-    <section class="card" id="refs">
-      <h2>主要参考来源</h2>
-      <ol class="ref-list" id="refList"></ol>
-    </section>
-  </main>
-  <div id="printFooter">本页面为手机优化版饮食计划，可由浏览器打印或另存为PDF。</div>
-</div>
-<div class="install-tip" id="installTip"><button onclick="this.parentElement.style.display='none'">知道了</button>手机浏览器可通过“分享”或菜单选择“添加到主屏幕”，作为类似APP入口使用。</div>
-<button class="float-top" id="floatTop" onclick="scrollToId('top')">↑</button>
-<nav class="bottom-nav" aria-label="底部导航">
-  <div class="nav-inner">
-    <button class="nav-link active" data-target="home"><span>⌂</span>目标</button>
-    <button class="nav-link" data-target="menu"><span>☰</span>菜单</button>
-    <button class="nav-link" data-target="shop"><span>□</span>采购</button>
-    <button class="nav-link" data-target="rules"><span>✓</span>执行</button>
-    <button class="nav-link" data-target="refs"><span>§</span>来源</button>
   </div>
+</header>
+<main class="wrap">
+  <section id="target" class="card">
+    <h2>1. 控重目标与低成本原则</h2>
+    <div class="grid">
+      <div class="kpi"><b>27.4</b><span>BMI约值，属于超重区间</span></div>
+      <div class="kpi"><b>1–2斤/月</b><span>更稳妥的减重速度</span></div>
+      <div class="kpi"><b>75–90g</b><span>每日蛋白质目标</span></div>
+      <div class="kpi"><b>18–28元</b><span>每日食材粗估，按地区浮动</span></div>
+    </div>
+    <p>低成本不是少吃，而是把钱花在“高饱腹、高蛋白、高营养密度”的基础食材上：鸡蛋、豆腐、豆浆、牛奶、去皮鸡腿/鸡胸、草鱼/鲫鱼/鲭鱼、应季绿叶菜、白菜、圆白菜、胡萝卜、土豆、红薯、燕麦、小米、大米。</p>
+    <div class="notice"><b>提示：</b>如果1个月胖10斤伴随水肿、气短、乏力、尿量变化、明显怕冷便秘或异常出血，先做体检/就医排查，不要只靠节食处理。</div>
+  </section>
+
+  <section id="menu" class="card">
+    <h2>2. 7天三餐不重样菜单</h2>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-day="1">第1天</button><button class="tab" data-day="2">第2天</button><button class="tab" data-day="3">第3天</button><button class="tab" data-day="4">第4天</button><button class="tab" data-day="5">第5天</button><button class="tab" data-day="6">第6天</button><button class="tab" data-day="7">第7天</button>
+    </div>
+    <article class="day active" id="day-1">
+      <div class="day-head"><b>第1天：启动日</b><span>约1320 kcal；蛋白质约82g；主食稳、蛋白足。</span></div>
+      <div class="meal-grid">
+        <section class="meal"><div class="label"><strong>早餐</strong><small>约330 kcal</small></div><p>燕麦35g + 纯牛奶250ml + 水煮蛋1个 + 苹果半个。</p></section>
+        <section class="meal"><div class="label"><strong>午餐</strong><small>约520 kcal</small></div><p>米饭熟重110g + 去皮鸡腿肉120g + 清炒圆白菜250g + 胡萝卜50g。</p></section>
+        <section class="meal"><div class="label"><strong>晚餐</strong><small>约390 kcal</small></div><p>红薯150g + 白菜豆腐汤：北豆腐180g、白菜300g、香菇/平菇少量；凉拌黄瓜1根。</p></section>
+      </div>
+      <div class="swap">省钱替换：鸡腿肉可换鸡胸、鸡蛋2个或豆腐250g；香菇可不放。</div>
+    </article>
+    <article class="day" id="day-2">
+      <div class="day-head"><b>第2天：家常控油日</b><span>约1280 kcal；蛋白质约78g；适合普通家庭炒菜。</span></div>
+      <div class="meal-grid">
+        <section class="meal"><div class="label"><strong>早餐</strong><small>约340 kcal</small></div><p>玉米1根中等大小 + 无糖豆浆300ml + 茶叶蛋1个 + 小番茄/番茄150g。</p></section>
+        <section class="meal"><div class="label"><strong>午餐</strong><small>约510 kcal</small></div><p>米饭熟重100g + 芹菜炒瘦猪肉90g + 豆芽炒胡萝卜250g，油合计不超过10g。</p></section>
+        <section class="meal"><div class="label"><strong>晚餐</strong><small>约380 kcal</small></div><p>小米南瓜粥1碗：小米30g、南瓜150g + 草鱼/鲫鱼块120g炖冬瓜250g。</p></section>
+      </div>
+      <div class="swap">省钱替换：鱼可用冷冻鲭鱼、带鱼段或鸡蛋豆腐羹替代。</div>
+    </article>
+    <article class="day" id="day-3">
+      <div class="day-head"><b>第3天：豆腐鸡肉日</b><span>约1340 kcal；蛋白质约86g；成本低、饱腹强。</span></div>
+      <div class="meal-grid">
+        <section class="meal"><div class="label"><strong>早餐</strong><small>约350 kcal</small></div><p>小米南瓜粥1碗 + 水煮蛋1个 + 纯牛奶200ml。</p></section>
+        <section class="meal"><div class="label"><strong>午餐</strong><small>约520 kcal</small></div><p>米饭熟重110g + 鸡胸/去皮鸡腿肉100g拌黄瓜 + 家常豆腐150g炖白菜200g。</p></section>
+        <section class="meal"><div class="label"><strong>晚餐</strong><small>约400 kcal</small></div><p>青菜鸡蛋挂面：挂面干重50g、鸡蛋1个、青菜250g、豆腐丁80g；少油少盐。</p></section>
+      </div>
+      <div class="swap">省钱替换：挂面可换荞麦面或普通面条；重点是面量控制在干重50g左右。</div>
+    </article>
+    <article class="day" id="day-4">
+      <div class="day-head"><b>第4天：鱼豆腐日</b><span>约1300 kcal；蛋白质约80g；补钙友好。</span></div>
+      <div class="meal-grid">
+        <section class="meal"><div class="label"><strong>早餐</strong><small>约330 kcal</small></div><p>全麦馒头/普通小馒头1个约60g + 鸡蛋1个 + 无糖豆浆250ml + 梨半个。</p></section>
+        <section class="meal"><div class="label"><strong>午餐</strong><small>约540 kcal</small></div><p>米饭熟重100g + 草鱼/鲫鱼150g炖豆腐120g + 清炒小白菜/上海青250g。</p></section>
+        <section class="meal"><div class="label"><strong>晚餐</strong><small>约360 kcal</small></div><p>土豆100g蒸/煮 + 鸡丝拌豆芽：鸡肉80g、豆芽250g、黄瓜半根；紫菜蛋花汤1碗。</p></section>
+      </div>
+      <div class="swap">省钱替换：鱼贵时用鸡蛋2个+豆腐200g补足蛋白。</div>
+    </article>
+    <article class="day" id="day-5">
+      <div class="day-head"><b>第5天：番茄鸡蛋日</b><span>约1270 kcal；蛋白质约76g；口味更家常。</span></div>
+      <div class="meal-grid">
+        <section class="meal"><div class="label"><strong>早餐</strong><small>约330 kcal</small></div><p>燕麦30g煮豆浆250ml + 香蕉半根 + 鸡蛋1个。</p></section>
+        <section class="meal"><div class="label"><strong>午餐</strong><small>约500 kcal</small></div><p>米饭熟重100g + 番茄炒蛋：番茄250g、鸡蛋1个 + 瘦肉炒圆白菜：瘦肉70g、圆白菜250g。</p></section>
+        <section class="meal"><div class="label"><strong>晚餐</strong><small>约390 kcal</small></div><p>红薯150g + 青菜豆腐汤：豆腐200g、青菜250g；凉拌海带丝/木耳少量。</p></section>
+      </div>
+      <div class="swap">省钱替换：海带丝没有就换凉拌黄瓜；番茄贵时换冬瓜或白菜。</div>
+    </article>
+    <article class="day" id="day-6">
+      <div class="day-head"><b>第6天：汤菜饱腹日</b><span>约1360 kcal；蛋白质约84g；适合周末批量备菜。</span></div>
+      <div class="meal-grid">
+        <section class="meal"><div class="label"><strong>早餐</strong><small>约350 kcal</small></div><p>蒸红薯120g + 纯牛奶250ml + 水煮蛋1个 + 黄瓜半根。</p></section>
+        <section class="meal"><div class="label"><strong>午餐</strong><small>约530 kcal</small></div><p>米饭熟重110g + 去皮鸡腿冬瓜汤：鸡腿肉120g、冬瓜300g + 清炒芹菜/青菜200g。</p></section>
+        <section class="meal"><div class="label"><strong>晚餐</strong><small>约410 kcal</small></div><p>鸡蛋豆腐蒸羹：鸡蛋1个、豆腐180g + 蒸南瓜150g + 蒜蓉油麦菜250g。</p></section>
+      </div>
+      <div class="swap">省钱替换：油麦菜可换任意当季绿叶菜；冬瓜可换白萝卜。</div>
+    </article>
+    <article class="day" id="day-7">
+      <div class="day-head"><b>第7天：收尾稳定日</b><span>约1290 kcal；蛋白质约79g；方便下周继续循环。</span></div>
+      <div class="meal-grid">
+        <section class="meal"><div class="label"><strong>早餐</strong><small>约330 kcal</small></div><p>玉米面粥/玉米糊1碗 + 鸡蛋1个 + 无糖豆浆250ml + 橘子1个。</p></section>
+        <section class="meal"><div class="label"><strong>午餐</strong><small>约520 kcal</small></div><p>米饭熟重100g + 白萝卜炖瘦肉100g + 炒青菜250g + 凉拌胡萝卜丝少量。</p></section>
+        <section class="meal"><div class="label"><strong>晚餐</strong><small>约370 kcal</small></div><p>白菜鱼豆腐汤：普通鱼块120g、豆腐120g、大白菜300g + 土豆80g。</p></section>
+      </div>
+      <div class="swap">省钱替换：普通鱼块可换冻鱼、鸡胸、鸡腿肉或豆腐加鸡蛋。</div>
+    </article>
+  </section>
+
+  <section id="shopping" class="card">
+    <h2>3. 一人一周采购清单</h2>
+    <div class="btnrow"><button class="btn" id="copyList">复制采购清单</button><button class="btn secondary" onclick="window.print()">打印/另存为PDF</button></div>
+    <div id="shoppingText" class="two" style="margin-top:12px">
+      <div class="box"><h3>主食</h3><p>大米/糙米或杂粮米约700g；燕麦250g；小米150g；玉米3根；红薯/紫薯800g；普通挂面或荞麦面200g；馒头2个；南瓜500g；土豆500g。</p></div>
+      <div class="box"><h3>蛋白质</h3><p>鸡蛋10–12个；北豆腐4盒约1200g；无糖豆浆1–1.5L或黄豆300g；纯牛奶1.5–2L；去皮鸡腿/鸡胸700g；瘦猪肉300g；普通鱼类600–800g。</p></div>
+      <div class="box"><h3>蔬菜</h3><p>大白菜/圆白菜2–3kg；绿叶菜1.5kg；番茄1kg；黄瓜4根；胡萝卜5根；冬瓜/白萝卜1.5kg；豆芽500g；芹菜500g；洋葱2个；海带/木耳少量。</p></div>
+      <div class="box"><h3>水果</h3><p>苹果3个；梨2个；香蕉2–3根；橘子/橙子4个。每日水果约200g，不用买高价浆果。</p></div>
+      <div class="box"><h3>调味</h3><p>碘盐、低钠酱油、醋、蒜、姜、葱、胡椒、辣椒面少量；菜籽油/花生油/橄榄油任选，每日总油控制约20–25g。</p></div>
+      <div class="box"><h3>可不买</h3><p>三文鱼、鳕鱼、蓝莓、藜麦、希腊酸奶、坚果大礼包、代餐粉、酵素、减肥茶、蛋白棒。</p></div>
+    </div>
+  </section>
+
+  <section id="rules" class="card">
+    <h2>4. 执行规则</h2>
+    <div class="checklist">
+      <label><input type="checkbox" data-key="r1"> 每餐先吃蔬菜和蛋白质，再吃主食；主食不取消，只定量。</label>
+      <label><input type="checkbox" data-key="r2"> 熟米饭每餐90–120g；红薯/玉米/土豆不要和米饭叠加过量。</label>
+      <label><input type="checkbox" data-key="r3"> 每日蔬菜至少500g，其中绿叶菜尽量占一半。</label>
+      <label><input type="checkbox" data-key="r4"> 每日饮水1500–1700ml；不喝奶茶、果汁、含糖饮料。</label>
+      <label><input type="checkbox" data-key="r5"> 炒菜每餐用油约1茶匙；盐少于5g/天，咸菜、腌菜、火腿肠少吃。</label>
+      <label><input type="checkbox" data-key="r6"> 每周称重2次即可；不要每天被体重波动影响。</label>
+    </div>
+    <details><summary>如果饿了怎么加餐</summary><p>优先选：牛奶200ml、无糖豆浆250ml、鸡蛋1个、苹果半个、黄瓜/番茄、豆腐汤半碗。不要用饼干、面包、坚果、奶茶解决饥饿。</p></details>
+    <details><summary>如果家里人一起吃怎么做</summary><p>全家菜一样做，给妈妈单独控制主食和油。她的盘子比例建议：半盘蔬菜，四分之一蛋白质，四分之一主食。</p></details>
+    <details><summary>如果两周不掉秤</summary><p>先查三件事：油是不是超量、熟米饭是不是超过120g、有没有零食饮料。确认执行到位后，再把晚餐主食减少30–50g熟重，或每天多走2000–3000步。</p></details>
+  </section>
+
+  <section id="safety" class="card">
+    <h2>5. 风险提示</h2>
+    <ul class="compact">
+      <li>如有糖尿病、慢性肾病、痛风、胆囊疾病、严重胃病、甲状腺疾病，菜单需要医生或营养师个体化调整。</li>
+      <li>不要把热量压到1000 kcal以下；中年女性过度节食容易疲劳、暴食反弹和肌肉流失。</li>
+      <li>近期快速增重可能与水肿、药物、睡眠、甲状腺、围绝经期激素变化有关；必要时做血糖、血脂、肝肾功能、甲状腺功能等检查。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>6. 依据与说明</h2>
+    <ul class="compact">
+      <li>中国居民膳食指南2022：食物多样、谷类为主；每天包括谷薯、蔬果、畜禽鱼蛋奶和豆类；平均每天12种以上食物、每周25种以上。</li>
+      <li>中国居民膳食指南2022：餐餐有蔬菜，每天新鲜蔬菜不少于300g；每天水果200–350g；奶类相当于每天300ml以上液态奶。</li>
+      <li>国家卫健委《成人肥胖食养指南（2024年版）》强调：成人肥胖患者膳食应全面、均衡、多样化，并限制总能量摄入。</li>
+      <li>本方案按家庭可执行优先，热量和蛋白为估算值；不同品牌、烹调油量和食材含水量会造成差异。</li>
+    </ul>
+    <p class="mini">本页面可离线缓存；第一次安装后若看不到更新，请刷新页面或清除浏览器缓存。</p>
+  </section>
+</main>
+<nav class="bottom-nav" aria-label="底部导航">
+  <a href="#target"><b>🎯</b>目标</a><a href="#menu"><b>🍱</b>菜单</a><a href="#shopping"><b>🛒</b>采购</a><a href="#rules"><b>✅</b>执行</a><a href="#safety"><b>⚠️</b>注意</a>
 </nav>
 <script>
-const DAYS = [{"day": "第1天", "summary": "约1317 kcal｜蛋白质97g｜纤维25g", "tag": "减重启动日", "meals": [["早餐", "燕麦35g + 低脂奶200mL + 蓝莓80g + 核桃6g + 水煮蛋1个"], ["午餐", "糙米饭100g + 清蒸鲈鱼120g + 西兰花200g + 胡萝卜80g + 北豆腐80g"], ["晚餐", "荞麦面120g + 鸡胸肉80g + 菠菜100g + 黄瓜120g + 胡萝卜50g + 芝麻酱5g"], ["加餐", "原味酸奶120g + 猕猴桃80g"]], "note": "鱼类、豆腐、奶类帮助补充优质蛋白和钙；适合减重启动日。"}, {"day": "第2天", "summary": "约1243 kcal｜蛋白质98g｜纤维24g", "tag": "高蛋白清爽日", "meals": [["早餐", "全麦面包50g + 水浸金枪鱼40g + 鸡蛋1个 + 番茄80g + 生菜40g + 无糖豆浆200mL"], ["午餐", "藜麦120g + 鸡胸肉80g + 生菜100g + 黄瓜100g + 小番茄120g + 玉米粒50g"], ["晚餐", "虾仁90g + 北豆腐100g + 菌菇150g + 青江菜150g + 小米30g + 南瓜120g"], ["加餐", "苹果130g + 无盐杏仁8g"]], "note": "若当天步数较多或下午饥饿，可加无糖高钙豆浆100mL。"}, {"day": "第3天", "summary": "约1422 kcal｜蛋白质97g｜纤维34g", "tag": "活动量较大日", "meals": [["早餐", "希腊酸奶180g + 燕麦25g + 草莓150g + 杏仁8g + 亚麻籽粉5g"], ["午餐", "全麦意面50g + 瘦牛肉80g + 番茄200g + 洋葱50g + 菠菜80g + 蘑菇80g"], ["晚餐", "三文鱼90g + 杂粮饭100g + 芥蓝200g + 海带丝60g + 毛豆60g"], ["加餐", "无糖豆浆200mL + 梨130g"]], "note": "本日热量略高，适合活动量较大的日子；三文鱼提供不饱和脂肪酸。"}, {"day": "第4天", "summary": "约1253 kcal｜蛋白质81g｜纤维26g", "tag": "轻晚餐日", "meals": [["早餐", "小米30g + 南瓜150g + 嫩豆腐100g + 鸡蛋1个 + 小番茄150g"], ["午餐", "糙米饭100g + 鸡胸肉100g + 彩椒150g + 木耳50g + 芹菜80g + 花生8g"], ["晚餐", "鲭鱼90g + 冬瓜250g + 海带50g + 芥蓝200g + 玉米粒80g"], ["加餐", "低脂奶180mL + 橙子130g"]], "note": "温和易执行；晚餐偏清淡，适合久坐或晚间活动少的日子。"}, {"day": "第5天", "summary": "约1261 kcal｜蛋白质88g｜纤维25g", "tag": "低脂高蛋白日", "meals": [["早餐", "玉米100g + 全麦馒头50g + 无糖豆浆250mL + 茶叶蛋1个 + 小番茄100g"], ["午餐", "红豆糙米饭120g + 瘦牛肉90g + 白萝卜200g + 蘑菇80g + 青江菜100g"], ["晚餐", "红薯130g + 鳕鱼100g + 菠菜150g + 北豆腐80g + 蘑菇80g"], ["加餐", "原味开菲尔/酸奶120g + 草莓120g + 核桃5g"]], "note": "牛肉补铁但控制份量；鳕鱼低脂高蛋白，适合作为轻晚餐。"}, {"day": "第6天", "summary": "约1354 kcal｜蛋白质87g｜纤维30g", "tag": "豆类纤维日", "meals": [["早餐", "燕麦香蕉蛋饼：燕麦30g + 香蕉70g + 鸡蛋1个 + 低脂奶80mL；另配原味酸奶100g"], ["午餐", "沙丁鱼70g + 熟鹰嘴豆80g + 熟藜麦80g + 番茄200g + 洋葱50g + 西葫芦150g"], ["晚餐", "鸡肉丸80g + 蘑菇100g + 青江菜150g + 豆腐60g + 紫薯130g"], ["加餐", "低脂奶180mL + 梨150g"]], "note": "带骨沙丁鱼有助钙和维生素D摄入，优先选原味或低钠罐头。"}, {"day": "第7天", "summary": "约1284 kcal｜蛋白质93g｜纤维27g", "tag": "骨骼友好日", "meals": [["早餐", "豆腐菠菜蛋饼：北豆腐70g + 鸡蛋1个 + 燕麦粉15g + 菠菜80g；配低脂奶180mL + 苹果80g"], ["午餐", "猪里脊70g + 豆干40g + 荷兰豆120g + 彩椒80g + 糙米饭100g"], ["晚餐", "鲈鱼100g + 北豆腐80g + 菌菇150g + 大白菜150g + 杂粮饭90g + 西兰花150g"], ["加餐", "猕猴桃120g + 核桃6g"]], "note": "鱼+豆腐+深绿色蔬菜组合，对骨骼和心血管更友好。"}];
-const SHOPPING = [["主食杂粮", "燕麦200g；糙米/杂粮米生重350–400g；藜麦100g；小米100g；全麦意面50–100g；荞麦面1小把；全麦面包4片；全麦馒头1–2个；玉米2根；红薯/紫薯3–4个。"], ["鱼禽畜蛋", "鸡胸约400g；鸡绞肉100g；瘦牛肉200g；猪里脊100g；鲈鱼约250g；三文鱼120g；鲭鱼120g；鳕鱼120g；虾仁120g；沙丁鱼罐头1罐；金枪鱼罐头1小罐；鸡蛋7–8个。"], ["奶和豆制品", "低脂/脱脂奶1.2–1.5L；无糖高钙豆浆约1L；原味/希腊酸奶600–700g；北豆腐2盒约600g；嫩豆腐1盒；豆干1小包；毛豆或鹰嘴豆1小袋/小罐。"], ["蔬菜", "深绿叶菜1.5–2kg；番茄/小番茄约1kg；菌菇600–700g；黄瓜2根；彩椒2–3个；南瓜300g；白萝卜1根；冬瓜300g；海带1袋；芹菜、荷兰豆、西葫芦、大白菜适量。"], ["水果", "猕猴桃3–4个；苹果2个；梨2个；草莓300g；蓝莓1小盒；橙子1–2个；香蕉1根。每日水果总量控制在200–350g。"], ["坚果与调味", "核桃20g；杏仁20g；亚麻籽粉1小袋；芝麻酱1小瓶；菜籽油/橄榄油250mL；低钠酱油；醋、黑胡椒、蒜、姜、柠檬、碘盐。"]];
-const RULES = ["每餐先保证蛋白质：鱼、鸡胸、虾、鸡蛋、豆腐、豆浆、酸奶轮换，目标85–95g/天。", "主食不取消，但定量：优先糙米、燕麦、藜麦、小米、玉米、薯类；熟米饭通常控制在90–120g/餐。", "蔬菜每日不少于300g，建议做到500g左右，其中深绿色蔬菜至少占一半。", "每天保留1次100–150 kcal加餐，避免用饼干、蛋糕、奶茶、果汁替代。", "烹调油每日约25g以内，炒菜每餐约1茶匙；盐<5g/天，酱油尽量≤10mL/天。", "白水1500–1700mL/天；含糖饮料、奶茶、果汁、酒精不纳入本方案。", "建议每周≥150分钟中等强度活动，并加入2天抗阻训练，以减少肌肉流失。"];
-const WARNINGS = ["1个月增加约10斤速度偏快。如伴随下肢/面部水肿、气短、乏力、尿量变化、明显怕冷便秘、异常出血，应先就医排查。", "如有糖尿病、慢性肾病、痛风、胆囊疾病、严重胃食管反流、骨质疏松用药、甲状腺疾病，菜单需个体化调整。", "服用左甲状腺素、华法林、双膦酸盐类骨质疏松药、部分降脂/降压药者，应特别注意药物与钙、铁、绿叶菜或葡萄柚的相互作用。", "连续2周严格执行后体重完全不动，先核查零食、油盐、主食称量和饮料；执行度高时再微调80–100 kcal或增加活动。"];
-const REFS = [["中国营养学会：《中国居民膳食指南（2022）》平衡膳食八准则", "https://dg.cnsoc.org/article/04/J4-AsD_DR3OLQMnHG0-jZA.html"], ["国家卫健委：《体重管理指导原则（2024年版）》", "https://www.nhc.gov.cn/ylyjs/zcwj/202412/75cb79c171c94def9e768193e65484f7/files/1736390749000_59785.pdf"], ["国家卫健委：《成人肥胖食养指南（2024年版）》", "https://www.nhc.gov.cn/sps/c100088/202402/9ba512ba8e314a47a181db11d2fa188d/files/1743476136267_20714.pdf"], ["WHO: Healthy diet", "https://www.who.int/news-room/fact-sheets/detail/healthy-diet"], ["WHO: Sodium reduction", "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction"], ["Dietary Guidelines for Americans 2020-2025", "https://www.dietaryguidelines.gov/sites/default/files/2021-03/Dietary_Guidelines_for_Americans-2020-2025.pdf"], ["NIH ODS: Calcium fact sheet", "https://ods.od.nih.gov/factsheets/Calcium-HealthProfessional/"], ["NIH ODS: Vitamin D fact sheet", "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/"], ["NIDDK: Choosing a safe and successful weight-loss program", "https://www.niddk.nih.gov/health-information/weight-management/choosing-a-safe-successful-weight-loss-program"]];
-const dayStrip = document.getElementById('dayStrip');
-const dayPanels = document.getElementById('dayPanels');
-let activeDay = Number(localStorage.getItem('diet-active-day') || 0);
-function mealIcon(name){ return {'早餐':'早','午餐':'午','晚餐':'晚','加餐':'加'}[name] || '餐'; }
-function renderDays(){
-  dayStrip.innerHTML = DAYS.map((d,i)=>`<button class="day-btn ${i===activeDay?'active':''}" data-i="${i}">${d.day.replace('第','D').replace('天','')}</button>`).join('');
-  dayPanels.innerHTML = DAYS.map((d,i)=>`<article class="day-panel ${i===activeDay?'active':''}" id="panel-${i}">
-    <div class="day-head"><div><h3>${d.day}</h3><span class="tag">${d.tag}</span></div><div class="day-meta">${d.summary}</div></div>
-    <div class="meal-grid-desktop">${d.meals.map(m=>`<div class="meal"><b>${mealIcon(m[0])}<br>${m[0]}</b><p>${m[1]}</p></div>`).join('')}</div>
-    <div class="note">${d.note}</div>
-    <div class="day-nav"><button onclick="setDay(Math.max(0, activeDay-1))">上一天</button><button onclick="setDay(Math.min(DAYS.length-1, activeDay+1))">下一天</button></div>
-  </article>`).join('');
-  dayStrip.querySelectorAll('.day-btn').forEach(btn=>btn.addEventListener('click',()=>setDay(Number(btn.dataset.i))));
-  updateDayCount();
-}
-function setDay(i){ activeDay = i; localStorage.setItem('diet-active-day', i); renderDays(); document.getElementById('menu').scrollIntoView({behavior:'smooth', block:'start'}); }
-function updateDayCount(){ document.getElementById('dayCount').textContent = `第${activeDay+1}天 / 共${DAYS.length}天`; }
-function renderShopping(){ document.getElementById('shoppingList').innerHTML = SHOPPING.map((s,i)=>`<details ${i<2?'open':''}><summary>${s[0]}</summary><p>${s[1]}</p></details>`).join(''); }
-function renderRules(){
-  const saved = JSON.parse(localStorage.getItem('diet-rule-checks') || '{}');
-  document.getElementById('ruleChecks').innerHTML = RULES.map((r,i)=>`<label class="check"><input type="checkbox" data-i="${i}" ${saved[i]?'checked':''}><span class="${saved[i]?'done':''}">${r}</span></label>`).join('');
-  document.querySelectorAll('#ruleChecks input').forEach(ch=>ch.addEventListener('change',()=>{
-    saved[ch.dataset.i] = ch.checked; localStorage.setItem('diet-rule-checks', JSON.stringify(saved));
-    ch.nextElementSibling.classList.toggle('done', ch.checked);
-  }));
-}
-function renderLists(){
-  document.getElementById('warnList').innerHTML = WARNINGS.map(w=>`<li>${w}</li>`).join('');
-  document.getElementById('refList').innerHTML = REFS.map(r=>`<li><a href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a></li>`).join('');
-}
-function scrollToId(id){ document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'}); }
-function sharePage(){
-  const title = document.title;
-  const text = '51岁女性7天健康减重饮食计划（手机版）';
-  if(navigator.share) navigator.share({title, text, url: location.href}).catch(()=>{});
-  else navigator.clipboard?.writeText(location.href).then(()=>alert('链接已复制'));
-}
-document.querySelectorAll('.nav-link').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); scrollToId(btn.dataset.target);
+const tabs=[...document.querySelectorAll('.tab')];
+const days=[...document.querySelectorAll('.day')];
+tabs.forEach(btn=>btn.addEventListener('click',()=>{
+  tabs.forEach(b=>b.classList.remove('active'));
+  days.forEach(d=>d.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('day-'+btn.dataset.day).classList.add('active');
+  localStorage.setItem('budgetDietDay',btn.dataset.day);
 }));
-const floatTop = document.getElementById('floatTop');
-window.addEventListener('scroll',()=>{floatTop.classList.toggle('show', window.scrollY>480);});
-setTimeout(()=>{ if(!localStorage.getItem('diet-install-tip-seen')){ document.getElementById('installTip').style.display='block'; localStorage.setItem('diet-install-tip-seen','1'); } }, 1200);
-renderDays(); renderShopping(); renderRules(); renderLists();
-</script>
+const savedDay=localStorage.getItem('budgetDietDay');
+if(savedDay){const b=document.querySelector(`[data-day="${savedDay}"]`); if(b) b.click();}
 
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
-  });
+document.querySelectorAll('.checklist input').forEach(input=>{
+  input.checked=localStorage.getItem(input.dataset.key)==='1';
+  input.addEventListener('change',()=>localStorage.setItem(input.dataset.key,input.checked?'1':'0'));
+});
+
+document.getElementById('copyList').addEventListener('click',async()=>{
+  const text=[...document.querySelectorAll('#shoppingText .box')].map(box=>box.innerText.trim()).join('\n\n');
+  try{await navigator.clipboard.writeText(text); alert('采购清单已复制');}
+  catch(e){alert('复制失败，请长按文字手动复制');}
+});
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 }
 </script>
 </body>
